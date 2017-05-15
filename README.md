@@ -1,3 +1,6 @@
+## face-recognition-scienceFair 
+# Microsoft Cognitive Face API will be used
+
 Source code for science fair project. These are the functions of each python scripts: <br>
 * `create_person.py`: Create person, user adds name for the person and scripts returns their Id (*personId*) <br>
 * `verify_similarities.py`: With input photo, will verify similaries with persons in person group, returning <br>
