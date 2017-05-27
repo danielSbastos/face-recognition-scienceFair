@@ -1,27 +1,26 @@
-import httplib, urllib, base64
-import ast
+import requests
+import json
 
-'''CREATE PERSON AT SPECIFIC GROUP PERSON '''
+'''CREATE PERSON'''
 
-def create_person():
+key = "{Ocp-Apim-Subscription-Key}" #YOUR key. Not gonna give you mine, smartypants
+
+def create_person(key):
 	headers = {
     	'Content-Type': 'application/json',
-    	'Ocp-Apim-Subscription-Key': '{subscription-key}',
-		}
+    	'Ocp-Apim-Subscription-Key': key}
 
+	name = "'" + input("Insert person's name: ") + "'" #define person's name
+	body = "{'name':" + name + "}" #add it to body part of request
 
-	name = "'" + raw_input("Insert person's name: ") + "'"
-	body = "{'name':" + name + "}"
+	resp = requests.post("https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/{personGroupId}/persons?",
+										data = body,
+										headers = headers)
 
-	conn = httplib.HTTPSConnection('westus.api.cognitive.microsoft.com')
-	conn.request("POST", "/face/v1.0/persongroups/{personGroupId}/persons?", body, headers)
-	response = conn.getresponse()
-
-	data = response.read()
-	personId = ast.literal_eval(data)
-	personId = personId["personId"]
-
-	conn.close()
-	print personId
+	data = json.loads(resp.text) #transform to json
+	print(data) #print response
 
 create_person()
+
+
+
