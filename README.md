@@ -10,11 +10,10 @@ Source code for science fair project. These are the functions of each python (se
 
 ## How to execute the scripts
 ### 1) `add_faces.py`
-From main directory, execute in terminal:<br>
-`python add_face.py personId number_of_files`<br>
-a) For example: `python add_face.py fc83229d-01ae-41de-897d-3ba879552101 2`<br>
+From main directory, execute in terminal: `python add_face.py personId number_of_files`<br><br>
+... **a)** For example: `python add_face.py fc83229d-01ae-41de-897d-3ba879552101 2`<br>
 The script will then ask you to insert the same number of files as written on the command<br>
-b) For example: (after executing the previous command): <br>
+... **b)** For example: (after executing the previous command): <br>
 `File: some/directory/with/image.png` <br>
 `File: some/directory/with/image2.png`
 
