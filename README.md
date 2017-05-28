@@ -9,7 +9,17 @@ Source code for science fair project. These are the functions of each python (se
 
 
 ## How to execute the scripts
-### 1) `add_faces.py`
+### **`create_person.py`**
+**I)** From the main directory, execute in the terminal:<br>
+`python create_person.py firstName LastName`<br>
+* For example: <br>
+`python create_person.py Daniel Bastos` <br>
+
+Response: personId<br>
+`fc83229d-01ae-41de-897d-3ba879552101`
+<hr>
+
+### **`add_faces.py`**
 **I)** From main directory, execute in the terminal: <br>`python add_face.py personId number_of_files`
 * For example: <br>`python add_face.py fc83229d-01ae-41de-897d-3ba879552101 2`<br>
 
@@ -18,7 +28,12 @@ Source code for science fair project. These are the functions of each python (se
 
 * For example: (after executing the previous command): <br>
 `File: some/directory/with/image.png` <br>
-`File: some/directory/with/image2.png`
+`File: some/directory/with/image2.png`<br>
+
+Returns persistedFaceId:<br>
+`{'persistedFaceId': '5b80307d-e004-4d9d-b668-e4f1b0c36bec'}`
+`{'persistedFaceId': '81401400-a7e4-4536-a3db-f4d5603b0466'}`
+
 
 
 
