@@ -1,12 +1,13 @@
 import requests
 import json
+import sys
 
 '''ADD FACES TO CERTAIN PERSON (INCLUDE PERSONID) '''
 
 key = "{Ocp-Apim-Subscription-Key}" #YOUR key. Not gonna give you mine, smartypants
 
-personId = input("Person ID: ") #define person whose faces will be added
-number_files = int(input("Number of files: ")) #define number number of files (faces) to add
+personId = sys.argv[1] #define person whose faces will be added
+number_files = int(sys.argv[2]) #define number number of files (faces) to add
 
 files = []
 for i in range(number_files):

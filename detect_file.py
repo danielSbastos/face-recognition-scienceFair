@@ -1,32 +1,23 @@
+#libraries for api connection
+import requests
+import json
+import sys
+
 #libraries to plot face features
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from PIL import Image
 import numpy as np
 
-#libraries for apiconnection
-import requests
-import json
-import sys
+''' OPEN PHOTO AND COMPARE WITH GROUP PERSON TO FIND SIMILAR PERSON '''
 
-#Libraries to take photo with webcam
-import pygame
-import pygame.camera
-from pygame.locals import *
-
-''' TAKE PHOTO WITH WEBCAM AND COMPARE WITH GROUP PERSON TO FIND SIMILAR PERSON '''
-
-#info to save webcam photo
 global FILENAME
-FILENAME = '{FILENAME}.jpg' #file taken by webcam will be saved with this name and later be used for analysis
-DEVICE = '/dev/video0' #webcam port
-SIZE = (640, 480) #size of pygame webcam window size
+FILENAME = sys.argv[2]
+personId = sys.argv[1]
 
 key = '{Ocp-Apim-Subscription-Key}' #YOUR key. Not gonna give you mine, smartypants
-
 targetFace = []
 faceLandmarks = []
-personId = []
 
 '''get all personIds in certain personGroup'''
 def get_ids(personId, key):
@@ -42,41 +33,6 @@ def get_ids(personId, key):
   for i in range(len(data)):
     #append to list the person id with its correspondant name, e.g. [124534nbh424523n5, Gabriel]
     personId.append([data[i]["personId"],data[i]["name"]])
-
-
-'''open webcam, take picture and save it as FILENAME'''
-def camstream():
-    #initialize camera and pygame
-    pygame.init()
-    pygame.camera.init()
-
-    #initialize a window or screen for display
-    display = pygame.display.set_mode(SIZE, 0)
-
-    #load a camera and initialize it
-    camera = pygame.camera.Camera(DEVICE, SIZE)
-    camera.start()
-
-    #call surface to represent display
-    screen = pygame.surface.Surface(SIZE, 0, display)
-
-    capture = True
-    while capture:
-      #captures screen as a Surface
-        screen = camera.get_image(screen)
-        #update the full display Surface to the screen (previously only )
-        display.blit(screen, (0,0))
-        pygame.display.flip()
-        for event in pygame.event.get():
-            if event.type == QUIT: #if "x" button is present, finish capture and don't save the image
-                capture = False
-            elif event.type == KEYDOWN and event.key == K_s: #if "s" key is pressed, save photo and finish capture
-                pygame.image.save(screen, FILENAME) #save photo as FILENAME
-                capture = False #break loop and exit it
-
-    camera.stop()
-    pygame.quit()
-    return
 
 
 '''for the webcam photo, detect face coordinates and face landmarks, respectively appending them to targetFace and faceLandmarks'''
@@ -109,7 +65,7 @@ def detect(key, targetFace, faceLandmarks):
   return faceId
 
 
-'''with photo already taken and having defined faceLandmarks and targetFace, check the confidence if it is
+'''with photo already added and having defined faceLandmarks and targetFace, check the confidence if it is
 each person in personGroup'''
 def verify(personId, key):
   headers_json = {'Content-Type': 'application/json',
@@ -160,4 +116,3 @@ if __name__ == '__main__':
   for i in personId: #for each personId, e.g. for each person in the person group, check confidence in
     verify(i, key) #detect() is called inside this function
   draw() #draw 27 points and rectangle on image taken by webcam
-

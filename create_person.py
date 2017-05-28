@@ -1,5 +1,6 @@
 import requests
 import json
+import sys
 
 '''CREATE PERSON'''
 
@@ -10,7 +11,7 @@ def create_person(key):
     	'Content-Type': 'application/json',
     	'Ocp-Apim-Subscription-Key': key}
 
-	name = "'" + input("Insert person's name: ") + "'" #define person's name
+	name = "'" + sys.argv[1] + ' ' +  sys.argv[2] + "'" #define person's name
 	body = "{'name':" + name + "}" #add it to body part of request
 
 	resp = requests.post("https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/{personGroupId}/persons?",
