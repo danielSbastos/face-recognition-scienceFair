@@ -1,5 +1,4 @@
 # face-recognition-scienceFair
-### Microsoft Cognitive Face API will be used
 
 Source code for science fair project. These are the functions of each python (series 3.x) scripts: <br>
 * `add_face.py`: Add faces to certain person, specified by *personId*
@@ -9,14 +8,14 @@ Source code for science fair project. These are the functions of each python (se
 * `get_ids.py`: Retrieve from each person, present in person group, their respective personId. <br>
 
 
-### How to execute the scripts.
-#### `add_faces.py`
+## How to execute the scripts
+### 1) `add_faces.py`
 From main directory, execute in terminal:<br>
 `python add_face.py personId number_of_files`<br>
-- For example: `python add_face.py fc83229d-01ae-41de-897d-3ba879552101 2`<br>
+a) For example: `python add_face.py fc83229d-01ae-41de-897d-3ba879552101 2`<br>
 The script will then ask you to insert the same number of files as written on the command<br>
-- For example: (after executing the previous command): <br>
-`File: some/directory/with/image.png`
+b) For example: (after executing the previous command): <br>
+`File: some/directory/with/image.png` <br>
 `File: some/directory/with/image2.png`
 
 
