@@ -44,7 +44,7 @@ Returns persistedFaceId:<br>
 `python detect_file.py PersonGroup/Family1-Dad/Family1-Dad3.jpg` <br>
 
 Returns file plotted with 27 facial landmarks and face rectangle, together with confidence of <br>similarity from each person:<br>
-<img src="https://github.com/danielSbastos/face-recognition-scienceFair/blob/master/PersonGroup/Family1-Dad/dad_points.png?raw=true" width="500"> <bt>
+<img src="https://github.com/danielSbastos/face-recognition-scienceFair/blob/master/PersonGroup/Family1-Dad/dad_points.png?raw=true" width="500"> <br>
 `This is Family Dad 0.8723`
 
 <hr>
