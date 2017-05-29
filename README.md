@@ -39,10 +39,35 @@ Returns persistedFaceId:<br>
 
 ### **`detect_file.py`**
 **I)** From the main directory, execute in the terminal:<br>
-`python detect_file.py personId file` <br>
+`python detect_file.py file` <br>
 * For example: <br>
-`python detect_file.py fc83229d-01ae-41de-897d-3ba879552101 PersonGroup/Family1-Dad/Family1-Dad3.jpg` <br>
-Return file plotted with 27 facial landmarks and face rectangle<br>
-![man](danielSbastos/face-recognition-scienceFair/PersonGroup/Family1-Dad/dad_points.png "man")
+`python detect_file.py PersonGroup/Family1-Dad/Family1-Dad3.jpg` <br>
 
+Returns file plotted with 27 facial landmarks and face rectangle, together with confidence of <br>similarity from each person:<br>
+<img src="https://github.com/danielSbastos/face-recognition-scienceFair/blob/master/PersonGroup/Family1-Dad/dad_points.png?raw=true" width="500"> <bt>
+`This is Family Dad 0.8723`
+
+<hr>
+
+### **`detect_webcam.py`**
+**I)** From main directory, execute in the terminal:<br>
+`python detect_webcam.py`<br>
+*Since I don't have "Family Dad" as a person by my side, I'm going to use an example of a webcam taking a <br> picture of my face, as seen on the gif below, and comparaing it to the people in my database*
+
+Returns confidence of photo with each person in personGroup and photo with 27 face landmarks and face rectangle<br>
+`This is not Anelise Bastos 0.0396`<br>
+`This is not Isabela Bastos 0.18006`<br>
+`This is Daniel Bastos 0.76689`<br>
+<img src="https://github.com/danielSbastos/face-recognition-scienceFair/blob/master/PersonGroup/daniel.gif?raw=true" width="500"> <br>
+
+<hr>
+
+### **`get_ids.py`**
+**I)** From main directory, execute in the terminal:<br>
+`python get_ids.py`<br>
+
+Returns all ids in personGroup with their respective person name:<br>
+`['fc83229d-01ae-41de-897d-3ba879552101', 'Family Dad']`<br>
+`['51d9d7fc-720c-4f65-8aec-8f1959adb39c', 'Family Mom']`<br>
+`['62bc7875-343d-4f76-b80c-62691656a349', 'Family Daughter']`
 

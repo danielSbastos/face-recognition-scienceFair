@@ -19,6 +19,7 @@ def get_ids(personId, key):
   for i in range(len(data)):
     personId.append([data[i]["personId"],data[i]["name"]]) #add to list the personId and its name as a list
 
-  print(personId)
+  for i in personId:
+    print(i)
 
 get_ids(personId, key)

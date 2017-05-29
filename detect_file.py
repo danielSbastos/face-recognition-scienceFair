@@ -1,23 +1,30 @@
-#libraries for api connection
-import requests
-import json
-import sys
-
 #libraries to plot face features
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from PIL import Image
 import numpy as np
 
-''' OPEN PHOTO AND COMPARE WITH GROUP PERSON TO FIND SIMILAR PERSON '''
+#libraries for apiconnection
+import requests
+import json
+import sys
 
+#Libraries to take photo with webcam
+import pygame
+import pygame.camera
+from pygame.locals import *
+
+''' INSERT FILE AND COMPARE IT WITH GROUP PERSON TO FIND SIMILAR PERSON '''
+
+#info to save webcam photo
 global FILENAME
-FILENAME = sys.argv[2]
-personId = sys.argv[1]
+FILENAME = sys.argv[1] #file insered by user will be be used for analysis
 
 key = '{Ocp-Apim-Subscription-Key}' #YOUR key. Not gonna give you mine, smartypants
+
 targetFace = []
 faceLandmarks = []
+personId = []
 
 '''get all personIds in certain personGroup'''
 def get_ids(personId, key):
@@ -35,7 +42,7 @@ def get_ids(personId, key):
     personId.append([data[i]["personId"],data[i]["name"]])
 
 
-'''for the webcam photo, detect face coordinates and face landmarks, respectively appending them to targetFace and faceLandmarks'''
+'''for the file, detect face coordinates and face landmarks, respectively appending them to targetFace and faceLandmarks'''
 def detect(key, targetFace, faceLandmarks):
   headers_octet = {
       'Content-Type': 'application/octet-stream',
@@ -65,7 +72,7 @@ def detect(key, targetFace, faceLandmarks):
   return faceId
 
 
-'''with photo already added and having defined faceLandmarks and targetFace, check the confidence if it is
+'''with photo already taken and having defined faceLandmarks and targetFace, check the confidence if it is
 each person in personGroup'''
 def verify(personId, key):
   headers_json = {'Content-Type': 'application/json',
@@ -116,3 +123,4 @@ if __name__ == '__main__':
   for i in personId: #for each personId, e.g. for each person in the person group, check confidence in
     verify(i, key) #detect() is called inside this function
   draw() #draw 27 points and rectangle on image taken by webcam
+
